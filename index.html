@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Premium de Financiamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="page-container">
+        
+        <div class="calculator-card">
+            <div class="header">
+                <h1>Simular Financiamento</h1>
+                <p>Descubra as condições ideais para o seu próximo veículo</p>
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo do Veículo</label>
+                <input type="text" id="modelo" placeholder="Ex: Honda Civic Touring 2024">
+            </div>
+
+            <div class="form-group">
+                <label for="preco">Preço do Veículo</label>
+                <input type="text" id="preco" class="money input-large" placeholder="R$ 0,00">
+            </div>
+
+            <div class="divider">Entrada e Avaliações</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="entrada_pct">Entrada Necessária (%)</label>
+                    <input type="text" id="entrada_pct" class="percent-nodecimal" placeholder="0%">
+                </div>
+                <div class="form-group">
+                    <label for="prev_entrada">Valor Previsto da Entrada</label>
+                    <input type="text" id="prev_entrada" class="readonly-input" readonly placeholder="R$ 0,00">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="seminovo">Avaliação Seminovo</label>
+                    <input type="text" id="seminovo" class="money" placeholder="R$ 0,00">
+                </div>
+                <div class="form-group">
+                    <label for="bonus">Bonificação no Seminovo</label>
+                    <input type="text" id="bonus" class="money" placeholder="R$ 0,00">
+                </div>
+            </div>
+
+            <div class="divider">Condições Financeiras</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="taxa">Taxa de Juros (% ao mês)</label>
+                    <input type="text" id="taxa" class="percent-decimal" placeholder="0,00%">
+                </div>
+                <div class="form-group">
+                    <label for="prazo">Prazo (Meses)</label>
+                    <input type="text" id="prazo" class="number-noxspace" placeholder="0x">
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="calcular()">Calcular Financiamento</button>
+
+            <div class="results-panel" id="resultados">
+                <div class="results-grid">
+                    <div class="res-box">
+                        <span>Entrada Exigida</span>
+                        <strong id="res_entrada">R$ 0,00</strong>
+                    </div>
+                    <div class="res-box">
+                        <span>Entrada Restante</span>
+                        <strong id="res_dinheiro_extra">R$ 0,00</strong>
+                    </div>
+                    <div class="res-box">
+                        <span>Valor Financiado</span>
+                        <strong id="res_financiado">R$ 0,00</strong>
+                    </div>
+                    <div class="res-box highlight">
+                        <span>Parcela (<span id="res_prazo">0</span>x)</span>
+                        <strong id="res_parcela">R$ 0,00</strong>
+                    </div>
+                </div>
+                <div class="res-total">
+                    <span>Custo Total do Veículo</span>
+                    <strong id="res_total">R$ 0,00</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section" id="historico_secao">
+            <div class="history-header">
+                <div>
+                    <h2>Histórico de Simulações</h2>
+                    <p>Todas as suas cotações salvas em um só lugar.</p>
+                </div>
+                <button class="btn-secondary" onclick="salvarTabelaCSV()">Salvar Planilha</button>
+            </div>
+            
+            <div class="table-wrapper">
+                <table id="tabela_historico">
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Preço</th>
+                            <th>Entrada Exigida</th>
+                            <th>Avaliação Seminovo</th>
+                            <th>Entrada Restante</th>
+                            <th>Taxa a.m.</th>
+                            <th>Parcelas</th>
+                            <th>Custo Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
